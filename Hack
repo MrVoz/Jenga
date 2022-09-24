@@ -1,0 +1,86 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Jenga Script", HidePremium = false, SaveConfig = true, ConfigFolder = OrionTest})
+
+OrionLib:MakeNotification({
+	Name = "Made By MrVoz!",
+	Content = "Welcome "..Player.Name.." ",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+local Tab1 = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab1:AddButton({
+	Name = "Delete Anti-Cheat",
+	Callback = function()
+      		game.Players.LocalPlayer.PlayerScripts.PlayerClient:Remove()
+  	end    
+})
+
+Tab1:AddButton({
+	Name = "Delete Tower",
+	Callback = function()
+      		game.Workspace.Map.Classic.Tower:Remove()
+  	end    
+})
+
+Tab1:AddButton({
+	Name = "Delete Kill Brick",
+	Callback = function()
+      		game.Workspace.Map.Classic.KillBrick:Remove()
+  	end    
+})
+
+Tab1:AddLabel("Dont Teleport Or Noclip In Spectating!")
+
+local Tab2 = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab2:AddButton({
+	Name = "Teleport Tool",
+	Callback = function()
+      		mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "TP Tool"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+  	end    
+})
+
+Tab2:AddButton({
+	Name = "Teleport Destroyer Area",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(237.22268676757812, 99.99994659423828, 23.746715545654297)
+  	end    
+})
+
+Tab2:AddButton({
+	Name = "Teleport Spectating Area",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(134.7100067138672, 252.9999542236328, -18.127214431762695)
+  	end    
+})
+
+Tab2:AddLabel("Dont Teleport In Spectating!")
+
+local Tab3 = Window:MakeTab({
+	Name = "Credits",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab3:AddLabel("Made By MrVoz")
+Tab3:AddLabel("I Am Not Good Scripting If You Liked My Script Thanks You :)")
